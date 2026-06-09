@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <title>備忘錄</title>
+    <script>
+      // GitHub Pages SPA fallback
+      // Save the current path to sessionStorage then redirect to the root
+      // The main index.html will read this and restore the URL via history.replaceState
+      sessionStorage.redirect = location.href
+    </script>
+    <meta http-equiv="refresh" content="0;URL='/note-web/'" />
+  </head>
+  <body>
+    <p>正在載入備忘錄...</p>
+  </body>
+</html>

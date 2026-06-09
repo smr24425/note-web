@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="#FFD60A"/>
+  <!-- Notepad body -->
+  <rect x="112" y="96" width="288" height="336" rx="20" fill="#FFFFFF"/>
+  <!-- Top ring holes -->
+  <circle cx="176" cy="96" r="18" fill="#FFD60A"/>
+  <circle cx="256" cy="96" r="18" fill="#FFD60A"/>
+  <circle cx="336" cy="96" r="18" fill="#FFD60A"/>
+  <!-- Lines -->
+  <rect x="152" y="176" width="208" height="14" rx="7" fill="#FFD60A"/>
+  <rect x="152" y="222" width="208" height="14" rx="7" fill="#FFD60A"/>
+  <rect x="152" y="268" width="160" height="14" rx="7" fill="#FFD60A"/>
+  <rect x="152" y="314" width="120" height="14" rx="7" fill="#FFD60A"/>
+</svg>
