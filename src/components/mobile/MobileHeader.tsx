@@ -31,13 +31,14 @@ export default function MobileHeader({ onHamburger, showHamburger }: MobileHeade
 
   return (
     <div
-      className="flex items-center gap-2 px-4 h-12 flex-shrink-0"
+      className="flex-shrink-0"
       style={{
         background: 'var(--color-sidebar-bg)',
         borderBottom: '1px solid var(--color-divider)',
         paddingTop: 'var(--safe-area-inset-top)',
       }}
     >
+    <div className="flex items-center gap-2 px-4 h-12">
       {/* Back button */}
       {canGoBack ? (
         <button
@@ -76,6 +77,7 @@ export default function MobileHeader({ onHamburger, showHamburger }: MobileHeade
 
       {/* Right spacer for balance */}
       <div className="min-w-[44px]" />
+    </div>
     </div>
   )
 }

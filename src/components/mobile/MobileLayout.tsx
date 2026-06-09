@@ -34,7 +34,7 @@ const pageVariants = {
 function ViewContent({ view }: { view: MobileView }) {
   if (view === 'folders') {
     return (
-      <div className="h-full overflow-y-auto" style={{ background: 'var(--color-sidebar-bg)' }}>
+      <div className="h-full overflow-hidden" style={{ background: 'var(--color-sidebar-bg)' }}>
         <Sidebar />
       </div>
     )

@@ -119,7 +119,7 @@ export default function AppLayout() {
 
   if (breakpoint === 'mobile') {
     return (
-      <div className="h-screen w-screen overflow-hidden" style={{ background: 'var(--color-editor-bg)' }}>
+      <div className="h-mobile-full w-screen overflow-hidden" style={{ background: 'var(--color-editor-bg)' }}>
         <MobileLayout />
       </div>
     )

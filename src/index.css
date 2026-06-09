@@ -108,8 +108,14 @@ html, body, #root {
   color: var(--color-list-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Allow safe-area env() to apply */
-  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Mobile full-height: dvh follows the visual viewport (collapses with browser chrome).
+   -webkit-fill-available is the fallback for older Safari / standalone PWA. */
+.h-mobile-full {
+  height: 100vh;
+  height: -webkit-fill-available;
+  height: 100dvh;
 }
 
 /* ─── Safe Area / Mobile ────────────────────────────────────── */

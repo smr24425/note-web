@@ -5,6 +5,7 @@ import type { VirtualFolder } from '../types'
 import ContextMenu from './ContextMenu'
 import ConfirmDialog from './ConfirmDialog'
 import { useLongPress } from '../hooks/useLongPress'
+import { useBreakpoint } from '../hooks/useBreakpoint'
 
 const VIRTUAL_FOLDERS: { id: VirtualFolder; label: string; icon: string }[] = [
   { id: 'all', label: '所有備忘錄', icon: '💬' },
@@ -48,6 +49,7 @@ export default function Sidebar() {
   const { folders, selectedFolderId, selectFolder, createFolder, renameFolder, deleteFolder } =
     useFoldersStore()
   const openSettings = useSettingsStore((s) => s.open)
+  const isMobile = useBreakpoint() === 'mobile'
   const [newFolderName, setNewFolderName] = useState('')
   const [isCreating, setIsCreating] = useState(false)
   const [editingId, setEditingId] = useState<string | null>(null)
@@ -104,15 +106,17 @@ export default function Sidebar() {
       className="flex flex-col h-full select-none"
       style={{ background: 'var(--color-sidebar-bg)' }}
     >
-      {/* App title */}
-      <div className="px-4 pt-5 pb-3">
-        <span
-          className="text-sm font-semibold tracking-tight"
-          style={{ color: 'var(--color-sidebar-text)', opacity: 0.5 }}
-        >
-          備忘錄
-        </span>
-      </div>
+      {/* App title — hidden on mobile (MobileHeader already shows it) */}
+      {!isMobile && (
+        <div className="px-4 pt-5 pb-3">
+          <span
+            className="text-sm font-semibold tracking-tight"
+            style={{ color: 'var(--color-sidebar-text)', opacity: 0.5 }}
+          >
+            備忘錄
+          </span>
+        </div>
+      )}
 
       {/* Virtual Folders */}
       <div className="px-2 space-y-0.5">
@@ -207,8 +211,12 @@ export default function Sidebar() {
 
       {/* Bottom bar: Add folder + Settings */}
       <div
-        className="px-3 py-3 border-t flex items-center justify-between"
-        style={{ borderColor: 'var(--color-divider)' }}
+        className="px-3 border-t flex items-center justify-between"
+        style={{
+          borderColor: 'var(--color-divider)',
+          paddingTop: '0.75rem',
+          paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))',
+        }}
       >
         <button
           onClick={startCreating}

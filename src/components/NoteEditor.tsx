@@ -245,10 +245,16 @@ export default function NoteEditor() {
           </div>
         </div>
 
-        {/* Floating glass toolbar — fixed, above keyboard, centered */}
+        {/* Floating glass toolbar — fixed, above keyboard, centered.
+            When keyboard is visible (toolbarBottom > 0), visualViewport already accounts
+            for the safe area zone so we skip it. When keyboard is hidden, add safe-area. */}
         <div
           className="fixed left-0 right-0 z-50 flex justify-center"
-          style={{ bottom: `${toolbarBottom + 12}px` }}
+          style={{
+            bottom: toolbarBottom > 0
+              ? `${toolbarBottom + 12}px`
+              : `calc(12px + env(safe-area-inset-bottom))`,
+          }}
         >
           <EditorToolbar editor={editor} />
         </div>

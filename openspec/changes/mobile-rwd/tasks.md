@@ -65,9 +65,19 @@
 
 ## 11. 安全區域 & 細節
 
-- [x] 11.1 App 根元素加入 `padding-bottom: env(safe-area-inset-bottom)`
+- [x] 11.1 ~~App 根元素加入 `padding-bottom: env(safe-area-inset-bottom)`~~ → 重構：移除 html/body/#root 三重疊加，改由各元件個別處理（見 13.x）
 - [x] 11.2 手機 header 加入 `padding-top: env(safe-area-inset-top)`（若非 standalone 則不需要）
 - [x] 11.3 禁止手機雙擊縮放（`touch-action: manipulation`）
+
+## 13. Standalone PWA 真機修正（真機測試後補入）
+
+- [x] 13.1 `AppLayout` mobile wrapper：`h-screen`（100vh）改為 `.h-mobile-full`（`100dvh` + `-webkit-fill-available` fallback），修正 standalone 模式畫面不滿版
+- [x] 13.2 `index.css`：加入 `.h-mobile-full` utility class；移除 `html/body/#root` 上錯誤的三重 `padding-bottom: env(safe-area-inset-bottom)`
+- [x] 13.3 `MobileLayout` folders ViewContent：`overflow-y-auto` → `overflow-hidden`，讓 Sidebar 內部 flex 自行管捲動，避免底部 bar 被捲走
+- [x] 13.4 `MobileHeader`：以外層 wrapper 承載 `paddingTop: var(--safe-area-inset-top)`，內層保持固定 `h-12`，防止 border-box 高度計算錯誤
+- [x] 13.5 `Sidebar` 底部 bar：加入 `paddingBottom: calc(0.75rem + env(safe-area-inset-bottom))`，避免被 home indicator 遮擋
+- [x] 13.6 `Sidebar`：手機模式（`useBreakpoint`）隱藏重複的「備忘錄」標題，節省可視高度
+- [x] 13.7 `NoteEditor` 浮動 toolbar：鍵盤收起時 bottom 改為 `calc(12px + env(safe-area-inset-bottom))`，鍵盤彈出時維持 `visualViewport` 計算值
 
 ## 12. 驗收測試（手動）
 
